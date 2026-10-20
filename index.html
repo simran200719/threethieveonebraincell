@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One Braincell Heist</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">A VERY SERIOUS CRIME</p>
+        <h1>ONE BRAINCELL <span>HEIST</span></h1>
+        <p class="subtitle">Three thieves. One thought. Absolutely no backup plan.</p>
+      </div>
+      <button id="restartBtn" class="button button-quiet">↻ Restart heist</button>
+    </header>
+
+    <section class="mission-strip">
+      <div><span class="status-dot"></span><span id="missionStatus">MISSION: GET THE LOOT</span></div>
+      <p>Every move advances the guards. Think before you bonk into a wall.</p>
+    </section>
+
+    <div class="game-layout">
+      <section class="board-panel panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">THE FLOOR PLAN</p><h2>Vault level 01</h2></div>
+          <div class="turn-pill">TURN <strong id="turnCount">0</strong></div>
+        </div>
+        <div id="board" class="board" role="grid" aria-label="Heist map"></div>
+        <div class="legend">
+          <span><i class="legend-tile wall"></i> Wall</span>
+          <span><i class="legend-tile door"></i> Security door</span>
+          <span><i class="legend-tile key"></i> Key</span>
+          <span><i class="legend-tile vault"></i> Vault</span>
+          <span><i class="legend-tile guard"></i> Guard</span>
+        </div>
+        <div class="event-log" aria-live="polite">
+          <div class="log-heading"><span>THE HEIST LOG</span><span>LIVE</span></div>
+          <div id="logMessages"><p>🧠 The brain cell has entered the building.</p></div>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <section class="panel brain-panel">
+          <p class="eyebrow">TEAM RESOURCE</p>
+          <div class="brain-row"><span class="brain-icon">🧠</span><div><h2>Shared brain cell</h2><p>One action at a time. No multitasking.</p></div></div>
+          <div class="brain-meter"><span id="brainMeter"></span></div>
+          <p class="small-note" id="brainStatus">Currently processing one (1) thought.</p>
+        </section>
+
+        <section class="panel crew-panel">
+          <div class="panel-heading compact"><div><p class="eyebrow">THE CREW</p><h2>Pick your genius</h2></div></div>
+          <div id="crewCards" class="crew-cards"></div>
+        </section>
+
+        <section class="panel action-panel">
+          <p class="eyebrow">AVAILABLE MOVE</p>
+          <h2 id="actionTitle">Select a thief</h2>
+          <p id="actionDescription" class="action-description">Choose a crew member, then click an adjacent tile to move.</p>
+          <button id="abilityBtn" class="button button-primary" disabled>Use ability</button>
+          <p class="small-note">Movement and abilities each use the team's one action.</p>
+        </section>
+
+        <section class="tip-card">
+          <span>💡 HEIST TIP</span>
+          <p>Guards are not smart. Unfortunately, neither are your thieves. Use that.</p>
+        </section>
+      </aside>
+    </div>
+    <footer>Made for people who think “we can wing it” is a strategy.</footer>
+  </main>
+  <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>
